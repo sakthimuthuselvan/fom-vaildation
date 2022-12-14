@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        body{
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: powderblue;
+            font-size: 17px;
+        }
+        div{
+            width: 400px;
+            padding: 40px;
+            background-color:white;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            box-shadow: 10px 5px 10px 0 rgba(0, 0, 0, 0.192);
+        }
+        input{
+            padding: 10px 0;
+            margin:10px 0;
+        }
+        #btn{
+            background-color: rgb(235, 145, 160);
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- <form action=""> -->
+        <h1>Form Validtation</h1>
+        <div>
+      <label for="">Name</label>
+        <input type="text" id="name" ><br>
+        <label for="" >Email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="">password</label>
+        <input type="password" name="" id="password"><br>
+        <input id="btn" type="button" value="submit" onclick="sumbit()">
+        </div>
+  
+    <!-- </form> -->
+
+<script>
+       
+    function sumbit(){
+         let name=document.getElementById("name").value.trim()
+        let email=document.getElementById("email").value.trim()
+        let password=document.getElementById("password").value.trim()
+
+
+        let ragex=/^([a-zA-Z0-9._])+\@([a-z])+\.([a-z])+$/
+        
+
+        if(name){
+            let namelen=name.length
+            if(namelen >=30){
+             alert("please enter lesser than 30 character")
+
+        }else  if(email){
+
+            if(!ragex.test(email)){
+
+        alert("please enter coreact email format '@gmail.com' ")
+
+        }else  if(password){
+        let len=password.length
+        let sim=password.match(/[^a-zA-Z0-9]/g)
+        let cap=password.match(/[A-Z]/g)
+        console.log(cap);
+        if(len > 15){
+      
+            alert("please enter your password maximum 15 character only")
+        }else if(len < 5){
+          
+            alert("please enter atleast more than 5 character")
+        }else if(!sim){
+       
+            alert("please enter atleast one special character")
+        }else if(!cap){
+       
+            alert("please enter one capital letter")
+        }else if(name,password,email){
+            alert("sucess")
+        }
+      }else{
+      
+        alert("please enter password")
+      }
+        }else{
+            alert("pls enter email id")
+        }
+        }else{
+            alert("please enter name")
+        }
+
+       
+   
+ 
+
+
+   
+    }
+
+</script>
+</body>
+</html>
