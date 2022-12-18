@@ -30,6 +30,8 @@
         input{
             padding: 10px 0;
             margin:10px 0;
+            text-indent: 20px;
+            font-size: 17px;
         }
         #btn{
             background-color: rgb(235, 145, 160);
@@ -37,6 +39,11 @@
             font-size: 18px;
             border: none;
             border-radius: 10px;
+        }
+        input:focus{
+            border:2px solid rgb(76, 135, 202);
+            outline: red;
+         
         }
         
     </style>
@@ -46,11 +53,12 @@
         <h1>Form Validtation</h1>
         <div>
       <label for="">Name</label>
-        <input type="text" id="name" ><br>
+        <input type="text" id="name" placeholder="your name"><br>
         <label for="" >Email</label>
-        <input type="text" name="" id="email"><br>
+        <input type="text"  id="email"placeholder="email"><br>
         <label for="">password</label>
-        <input type="password" name="" id="password"><br>
+        <input type="password" id="password" placeholder="password"><br>
+          <input type="password" id="cpassword" placeholder="confirm password"><br>
         <input id="btn" type="button" value="submit" onclick="sumbit()">
         </div>
   
@@ -62,6 +70,7 @@
          let name=document.getElementById("name").value.trim()
         let email=document.getElementById("email").value.trim()
         let password=document.getElementById("password").value.trim()
+        let cpassword=document.getElementById("cpassword").value.trim()
 
 
         let ragex=/^([a-zA-Z0-9._])+\@([a-z])+\.([a-z])+$/
@@ -70,7 +79,7 @@
         if(name){
             let namelen=name.length
             if(namelen >=30){
-             alert("please enter lesser than 30 character")
+             alert("please enter name lesser than 30 character")
 
         }else  if(email){
 
@@ -83,21 +92,28 @@
         let sim=password.match(/[^a-zA-Z0-9]/g)
         let cap=password.match(/[A-Z]/g)
         console.log(cap);
-        if(len > 15){
+        if(len > 8){
       
-            alert("please enter your password maximum 15 character only")
-        }else if(len < 5){
+            alert("please enter your password should be 8 character only")
+        }else if(len < 8){
           
-            alert("please enter atleast more than 5 character")
+            alert("your password should be 8 characters")
         }else if(!sim){
        
-            alert("please enter atleast one special character")
+            alert("please enter atleast one special character on your password")
         }else if(!cap){
        
-            alert("please enter one capital letter")
-        }else if(name,password,email){
+            alert("please enter one capital letter on your password")
+        }else if(cpassword){
+            if(password===cpassword){
             alert("sucess")
+             }else{
+            alert("please check your confirm password")
         }
+        } else{
+            alert("please enter confirm password")
+        }
+       
       }else{
       
         alert("please enter password")
